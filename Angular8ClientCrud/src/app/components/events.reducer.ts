@@ -4,11 +4,11 @@ import { Event} from './models/event.model';
 
 
 export const initialState: Event[] = [
-  new Event('Maratones','Programar mucho'),
+  new Event('Maratones','Programar mucho',new Date('01/02/2020'))
 ];
 
 const eventReducer = createReducer(initialState,
-    on(add, (state, { name, description }) => [...state, new Event( name,description )]),
+    on(add, (state, { name, description,date }) => [...state, new Event( name,description,date )]),
   
     /*on(toggle, (state, { id }) => {
       return state.map( todo => {

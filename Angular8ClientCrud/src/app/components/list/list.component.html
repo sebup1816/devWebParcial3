@@ -1,4 +1,6 @@
-<ul class="event-list">
-    <app-event-item *ngFor="let event of events | filterEvent:filterCurrent"
-    [event]="event"></app-event-item>
+<div class="row">
+  <ul class="event-list">
+      <app-event-item *ngFor="let event of events | filterEvent:filterCurrent"
+      [event]="event"></app-event-item>
   </ul>
+</div>

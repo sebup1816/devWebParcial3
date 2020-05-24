@@ -8,7 +8,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {appReducers} from './app.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
-
+import {ToastrModule} from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,6 +20,14 @@ import {environment} from '../environments/environment';
     FormsModule,
     eventsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut:2000,
+      progressBar:true,
+      preventDuplicates:true,
+      progressAnimation:"increasing",
+      positionClass:'toast-top-full-width',
+    }),
+    BrowserAnimationsModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument( {
       maxAge: 25,
