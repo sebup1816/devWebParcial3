@@ -1,0 +1,16 @@
+<div class="card bg-primary text-white text-center p-3">
+    <div class="card-header bg-transparent border-success">Create an event</div>
+    <div class="input-group input-group-sm mb-3">
+        <input class="form-control" aria-label="Small"
+        placeholder="Event name"
+        [formControl]="name"
+        >
+      </div>
+      <div class="input-group input-group-sm mb-3">
+            <input class="form-control" aria-label="Small"
+            placeholder="Event description"
+            [formControl]="description"
+            (keyup.enter)="add()"
+            >
+      </div>
+    
