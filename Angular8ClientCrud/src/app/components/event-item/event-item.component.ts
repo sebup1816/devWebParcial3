@@ -13,29 +13,56 @@ import * as actions from '../events.actions';
 export class EventItemComponent implements OnInit {
 
   @Input() event: Event;
+
+  /*
   @ViewChild('inputControl') name: ElementRef;
   @ViewChild('inputControl') description: ElementRef;
+  @ViewChild('inputControl') date: ElementRef;
+  @ViewChild('inputControl') mode: ElementRef;*/
 
-  chkCompleted: FormControl;
   txtInput: FormControl;
-  
+  txtInputD: FormControl;
 
-  editing = false;
+  mode: string;
+
+  editingName = false;
+  editingDescription = false;
+  editingMode = false;
 
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
     this.txtInput = new FormControl( this.event.name, Validators.required );
-    this.txtInput = new FormControl( this.event.description, Validators.required );
+    this.txtInputD = new FormControl( this.event.description, Validators.required );
+  }
+  editName(is:number) {
+    if(is==0){
+      this.editingName = true;
+      this.txtInput.setValue( this.event.name );
+    }else if(is==1){
+      this.editingDescription = true;
+      this.txtInputD.setValue(this.event.description);
+    }else {
+      this.mode="end"
+      this.save();
+    }
   }
 
   save() {
-    this.editing = false;
-
-    if ( this.txtInput.invalid ) { return; }
-    if ( this.txtInput.value === this.event.name ) { return; }
+    this.editingName = false;
+    this.editingDescription = false;
+    this.editingMode = false;
+    if ( this.txtInput.invalid && this.txtInputD.invalid) { return; }
+    if ( this.txtInput.value === this.event.name && this.txtInputD.value === this.event.description) { return; }
+    this.store.dispatch(
+      actions.editName({
+        id: this.event.id,
+        name: this.txtInput.value,
+        description: this.txtInputD.value,
+        mode: this.mode
+      })
+    );
   }
 
- 
 
 }

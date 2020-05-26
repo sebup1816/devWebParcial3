@@ -1,6 +1,10 @@
-<div class="row">
-  <ul class="event-list">
-      <app-event-item *ngFor="let event of events | filterEvent:filterCurrent"
-      [event]="event"></app-event-item>
-  </ul>
-</div>
+  <div class="row row-cols-2">
+    <div class="col">
+      <ul>
+        <app-event-item *ngFor="let event of events"
+        [event]="event"></app-event-item>
+      </ul>
+    </div>
+  </div>
+
+

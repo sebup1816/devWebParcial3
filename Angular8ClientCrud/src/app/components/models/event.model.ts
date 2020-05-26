@@ -3,11 +3,13 @@ export class Event {
     public name: string;
     public description: string;
     public date: Date;
+    public mode: string;
   
-    constructor( name: string, description:string, date: Date ) {
+    constructor( name: string, description:string, date: Date,mode: string) {
       this.name = name;
       this.id = Math.random();
       this.description = description;
       this.date= date;
+      this.mode= mode;
     }
   }
