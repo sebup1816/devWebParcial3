@@ -1,21 +1,28 @@
 <div class="card border-success mb-3" style="max-width: 18rem;">
   <div class="card-header bg-transparent border-success">
-    <label (dblclick)="editName(0)" *ngIf="editingName==false">{{event.name}}</label>
+    <label (dblclick)="editName(0)" *ngIf="editingName==false"><b>{{event.name}}</b></label>
     <input class="edit" type="text" [formControl]="txtInput" *ngIf="editingName==true" (blur)="save()" #inputControl>
   </div>
 
-  <div class="card-body text-success">
-    <label (dblclick)="editName(1)" *ngIf="editingDescription==false">{{event.description}}</label>
-    <input class="edit" type="text" [formControl]="txtInputD" *ngIf="editingDescription==true" (blur)="save()"
+  <div class="card-body">
+    <div class="text-dark">
+      <label (dblclick)="editName(1)" *ngIf="editingDescription==false">{{event.description}}</label>
+      <input class="edit" type="text" [formControl]="txtInputD" *ngIf="editingDescription==true" (blur)="save()"
       #inputControl>
+    </div>
     <br>
-    <div class="row row-cols-2">
-      <div class="col">
+    <div class="row row-cols-2 text-success">
+      <div class="col-lg-6">
         <label>Current mode: {{event.mode}}</label>
+        <button class="btn btn-warning btn-lg" (click)="editName(3)">Change mode</button>
       </div>
       <div class="col">
-        <button class="btn btn-danger" (click)="editName(3)">Hello world</button>
+
       </div>
     </div>
   </div>
-  <div class="card-footer bg-transparent border-success">{{event.date}}</div>
+  <div class="card-footer bg-transparent border-success">
+    <label *ngIf="editingD==false" (dblclick)="editName(4)">{{event.date}}</label>
+    <input class="form-control" [formControl]="dateI" type="datetime-local" *ngIf="editingD==true" (blur)="save()">
+  </div>
+</div>

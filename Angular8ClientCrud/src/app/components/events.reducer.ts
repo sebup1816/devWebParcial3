@@ -10,48 +10,21 @@ export const initialState: Event[] = [
 const eventReducer = createReducer(initialState,
     on(add, (state, { name, description, date, mode }) => [...state, new Event( name,description,date, mode)]),
 
-    on(editName, (state, { id, name, description,mode }) => {
+    on(editName, (state, { id, name, description,mode, date }) => {
       return state.map( event => {
         if ( event.id === id ) {
           return {
             ...event,
             name,
             description,
-            mode
+            mode,
+            date
           };
         }  else {
           return event;
         }
       });
     }),
-  
-    /*on(toggle, (state, { id }) => {
-      return state.map( todo => {
-        if ( todo.id === id ) {
-          return {
-            ...todo,
-            completed: !todo.completed
-          };
-        }  else {
-          return todo;
-        }
-      });
-    }),
-  
-    
-  
-    on(remove, (state, { id }) =>  state.filter( todo => todo.id !== id )),
-  
-    on(toggleAll, (state, { completed }) => {
-      return state.map( todo => {
-          return {
-            ...todo,
-            completed
-          };
-      });
-    }),
-    
-    //on(clearComplete, (state) => state.filter( todo => !todo.completed )),*/
   );
   
   

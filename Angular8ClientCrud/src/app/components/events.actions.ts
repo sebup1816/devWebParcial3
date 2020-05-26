@@ -8,5 +8,5 @@ export const add = createAction(
 
 export const editName = createAction(
   '[EVENT] Edit name',
-        props<{id: number, name: string, description:string, mode:string}>()
+        props<{id: number, name: string, description:string, mode:string, date:Date}>()
 )

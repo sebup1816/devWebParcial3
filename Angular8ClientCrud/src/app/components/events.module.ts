@@ -6,11 +6,11 @@ import{EventsComponent} from'./events/events.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { EventItemComponent } from './event-item/event-item.component';
-import { FilterPipe } from './filter.pipe';
+
 
 
 @NgModule({
-  declarations: [AddComponent,ListComponent,EventsComponent, EventItemComponent,FilterPipe],
+  declarations: [AddComponent,ListComponent,EventsComponent, EventItemComponent],
   exports: [
     EventsComponent
   ],

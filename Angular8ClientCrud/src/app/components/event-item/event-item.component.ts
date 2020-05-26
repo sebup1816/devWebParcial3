@@ -14,55 +14,66 @@ export class EventItemComponent implements OnInit {
 
   @Input() event: Event;
 
-  /*
-  @ViewChild('inputControl') name: ElementRef;
-  @ViewChild('inputControl') description: ElementRef;
-  @ViewChild('inputControl') date: ElementRef;
-  @ViewChild('inputControl') mode: ElementRef;*/
-
   txtInput: FormControl;
   txtInputD: FormControl;
-
-  mode: string;
+  modeI: string;
+  dateI: FormControl;
 
   editingName = false;
   editingDescription = false;
   editingMode = false;
-
+  editingD = false;
+  
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
     this.txtInput = new FormControl( this.event.name, Validators.required );
     this.txtInputD = new FormControl( this.event.description, Validators.required );
+    this.dateI = new FormControl (this.event.date, Validators.required);
+    this.modeI = this.event.mode;
   }
   editName(is:number) {
     if(is==0){
       this.editingName = true;
-      this.txtInput.setValue( this.event.name );
+      //this.txtInput.setValue( this.event.name );
     }else if(is==1){
       this.editingDescription = true;
-      this.txtInputD.setValue(this.event.description);
-    }else {
-      this.mode="end"
-      this.save();
+      //this.txtInputD.setValue(this.event.description);
+    }else if(is==3) {
+      this.editingMode=true;
+     this.modeI=this.alternate(this.event.mode);
+      this.save()
+    }else if(is==4){
+      this.editingD = true;
     }
+  }
+
+  alternate(mode: string){
+    var a=["init","activate","end"];
+      if(mode==a[0]){
+        return a[1]; 
+      }else if(mode==a[1]){
+        return a[2]
+      }else{
+        return a[0]
+      }
   }
 
   save() {
     this.editingName = false;
     this.editingDescription = false;
     this.editingMode = false;
-    if ( this.txtInput.invalid && this.txtInputD.invalid) { return; }
-    if ( this.txtInput.value === this.event.name && this.txtInputD.value === this.event.description) { return; }
+    
     this.store.dispatch(
       actions.editName({
         id: this.event.id,
         name: this.txtInput.value,
         description: this.txtInputD.value,
-        mode: this.mode
+        mode: this.modeI,
+        date: new Date(this.dateI.value)
       })
     );
+    console.log(this.dateI);
+    console.log(this.event.date)
   }
-
-
 }
