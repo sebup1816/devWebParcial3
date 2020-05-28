@@ -1,8 +1,8 @@
-<div class="card text-white bg-info mb-3 text-center p-3">
-    <div class="card-header">Create an event</div>
+<div class="card border-dark card text-white bg-info mb-5 text-center p-3" style="width:auto">
+    <div class="card-header bg-transparent border-dark font-weight-bold">Create event</div>
     <br>
       <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Event name</label>
+        <label for="example-text-input font-weight-bold" class="col-2 col-form-label font-weight-bold">Event name</label>
         <div class="col-10">
           <input class="form-control" aria-label="Small"
               [formControl]="name"
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="example-search-input" class="col-2 col-form-label">Event description</label>
+        <label for="example-search-input" class="col-2 col-form-label font-weight-bold">Event description</label>
         <div class="col-10">
           <input class="form-control" aria-label="Small"
             [formControl]="description"
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="example-datetime-local-input" class="col-2 col-form-label">Date</label>
+        <label for="example-datetime-local-input" class="col-2 col-form-label font-weight-bold">Event date</label>
         <div class="col-10">
           <input class="form-control" type="datetime-local" 
           [formControl]="date"
@@ -26,9 +26,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleSelect1">Current mode</label>
+        <label for="exampleSelect1" class="font-weight-bold">Current status</label>
         <select class="form-control" name="mode" [(ngModel)]="mode" >
-          <option>init</option>
+          <option>initiated</option>
           <option>active</option>
           <option>end</option>
         </select>

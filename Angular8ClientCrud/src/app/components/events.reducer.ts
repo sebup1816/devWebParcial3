@@ -4,7 +4,7 @@ import { Event} from './models/event.model';
 
 
 export const initialState: Event[] = [
-  new Event('Maratones','Programar mucho',new Date('01/02/2020'), 'init'),
+  new Event('Maratones','Programar mucho',new Date('01/02/2020'), 'initiated'),
   new Event('Olimpiadas','Ser Dios matematico', new Date('06/06/2016'), 'end'),
   new Event('Feria de posters','Proyectos en posters', new Date('05/24/2020'), 'active')
 ];

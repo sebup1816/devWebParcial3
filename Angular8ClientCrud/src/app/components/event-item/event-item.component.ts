@@ -49,7 +49,7 @@ export class EventItemComponent implements OnInit {
   }
 
   alternate(mode: string){
-    var a=["init","activate","end"];
+    var a=["initiated","activate","end"];
       if(mode==a[0]){
         return a[1]; 
       }else if(mode==a[1]){
